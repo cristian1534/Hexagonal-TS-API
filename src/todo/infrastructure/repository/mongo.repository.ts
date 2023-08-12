@@ -12,4 +12,21 @@ export class MongoRepository implements TodoRepository {
     const todoList = await TodoModel.find();
     return todoList;
   }
+
+  async deleteTodo(id: string): Promise<any> {
+    const deletedTodo = await TodoModel.findOneAndDelete({ _id: id });
+    return deletedTodo;
+  }
+
+  async updateTodo(
+    id: string,
+    updatedData: Partial<TodoEntity>
+  ): Promise<any | null> {
+    const updatedTodo = await TodoModel.findOneAndUpdate(
+      { _id: id },
+      updatedData,
+      { new: true }
+    );
+    return updatedTodo;
+  }
 }

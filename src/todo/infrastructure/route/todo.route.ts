@@ -11,5 +11,7 @@ const todoCtrl = new TodoController(todoUseCase);
 
 route.post("/task", todoCtrl.addCtrl);
 route.get("/task", todoCtrl.getCtrl);
+route.delete("/task/:id", todoCtrl.deleteCtrl);
+route.put("/task/:id", todoCtrl.updateCtrl);
 
 export default route;

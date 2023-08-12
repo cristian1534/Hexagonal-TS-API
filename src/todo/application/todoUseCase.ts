@@ -14,4 +14,14 @@ export class TodoUseCase {
     const todoList = await this.todoRepository.getTodo();
     return todoList;
   }
+
+  public async removeTodo(id: string) {
+    const deletedTodo = await this.todoRepository.deleteTodo(id);
+    return deletedTodo;
+  }
+
+  public async updateTodo(id: string, updatedData: Partial<TodoValue>) {
+    const updatedTodo = await this.todoRepository.updateTodo(id, updatedData);
+    return updatedTodo;
+  }
 }
